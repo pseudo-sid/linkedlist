@@ -108,6 +108,6 @@ void deleteCycle(Node *& head){
 
 
 int main(){
-
+	//hardcoded linkedlist
 return 0;
 }
