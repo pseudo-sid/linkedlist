@@ -10,8 +10,19 @@ int main(){
     l2.push_back("pineapple");
     cout << l2.front()<<endl;
     l2.pop_front();
+    
+    l2.push_back("carrot");
+    l2.push_back("lemon");
+
+    for(auto s: l2)
+        cout << s <<"->";
+    cout << endl;
+
+    string f;   cin >> f;
+    l2.remove(f);
     for(auto s: l2)
         cout << s <<"->";
     cout << endl;
     return 0;
+
 }
