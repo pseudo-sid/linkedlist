@@ -75,48 +75,39 @@ istream& operator >> (istream &is, Node* &head){
 	return is;
 }
 
-Node* midpoint(Node* head){
-	if(head == NULL || head->next == NULL)
-		return head;
-	Node* slow = head;
-	Node* fast = head->next;
 
+bool detectCycle(Node *head){
+	Node * slow = head;
+	Node * fast = head;
+	while(fast != NULL && fast-> next != NULL){
+		fast = fast-> next->next;
+		slow = slow-> next;
 
-	while(fast != NULL && fast->next != NULL){
-		fast = fast->next->next;
-		slow = slow->next;
+		if(fast == slow)
+			return true;
 	}
-	return slow;
+	return false;
 }
 
-Node *merge(Node * a, Node * b){
-	if (a == NULL )
-		return  b;
-	if(b == NULL)
-		return a;
-	Node * c;
-	if(a->data < b->data){
-		c = a;
-		c->next = merge(a->next, b);
+void deleteCycle(Node *& head){
+	Node * slow = head;
+	Node * fast = head;
+	while(fast != NULL && fast -> next != NULL){
+		fast = fast -> next->next;
+		slow = slow-> next;
+		if(fast == slow)
+			break;
 	}
-	else{
-		c = b; 
-		c->next = merge(a, b->next);
+	slow = head;
+	while(fast->next != slow){
+		slow = slow ->next;
+		fast = fast -> next;
 	}
-	return c;
+	fast->next = NULL;
 }
 
-Node * mergeSort(Node * head){
-	if(head == NULL || head->next == NULL)
-		return head;
-	Node* mid = midpoint(head);
-	Node *a = head;
-	Node *b = mid->next;
-	mid->next = NULL;
-	a = mergeSort(a);
-	b = mergeSort(b);
-	return merge(a,b);
-}
+
 int main(){
 
+return 0;
 }
